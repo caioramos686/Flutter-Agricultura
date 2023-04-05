@@ -1,0 +1,563 @@
+@startuml
+set namespaceSeparator ::
+
+class "gedave::view_model::gedave::retorno_consulta_ptv_view_model.dart::NotFound" {
+  +Map<String, dynamic> response
+}
+
+class "gedave::view_model::gedave::retorno_consulta_view_model.dart::Data" {
+  +Map<String, dynamic> response
+}
+
+class "gedave::view_model::gedave::retorno_consulta_view_model.dart::NotFound" {
+  +Map<String, dynamic> response
+}
+
+class "gedave::model::cfoc_model.dart::CfocModel" {
+  +int id
+  +int codigo
+  +String codigoBarras
+  +int codigoUC
+  +String produtorNome
+  +String produtorCpfCnpj
+  +String propriedadeNome
+  +String propriedadeCodigo
+  +String propriedadeEndereco
+  +String propriedadeMunicipio
+  +String propriedadeUf
+  +bool flagPragaQuarentenaria
+  +bool flagPragaNaoQuarentenaria
+  +bool flagPragaEspecifica
+  +bool flagPragaExportacao
+  +bool transpPartidaLacrada
+  +String rtEmitenteNome
+  +String rtEmitenteCrea
+  +String rtEmitenteHabilitacao
+  +String rtEmitenteFormacao
+  +String dataEmissao
+  +String dataVencimento
+  +String nomeMunicipioEmissao
+  +int validadeDias
+  +List<dynamic> produtos
+  +List<dynamic> declaracoes
+}
+
+class "gedave::model::consulta_certificado_comercio_produtos_insumos_vet_model.dart::ConsultaCertificadoComercioProdutosInsumosVetModel" {
+  +String nomeFantasia
+  +String codigoCnpj
+  +String endereco
+  +String nomeMunicipio
+  +String nomeUnidadeAdministrativa
+  +String dataEmissao
+  +String dataValidadeRegistroCda
+  +String statusPessoaJuridica
+}
+
+class "gedave::model::cert_vacinacao_compulsoria_model.dart::CertVacinacaoCompulsoriaModel" {
+  +int id
+  +String codAutenticacao
+  +String nomeEstabelecimento
+  +String tipoRegistro
+  +int codPropriedade
+  +String nomePropriedade
+  +int codAp
+  +String nomeProdutor
+  +String cpfCnpjProdutor
+  +String municipioPropriedade
+  +String dataValidade
+  +String dataEmissao
+}
+
+class "gedave::model::ptv_model.dart::PtvModel" {
+  +int id
+  +int codigo
+  +String codigoBarras
+  +String interessadoNome
+  +String interessadoCpfCnpj
+  +String destinatarioNome
+  +String destinatarioCpfCnpj
+  +String destinatarioEndereco
+  +String destinatarioMunicipio
+  +String destinatarioUf
+  +String propriedadeNome
+  +String propriedadeEndereco
+  +String propriedadeMunicipio
+  +String propriedadeUf
+  +bool transpPartidaLacrada
+  +String rtEmitenteNome
+  +String rtEmitenteCrea
+  +String rtEmitenteHabilitacao
+  +String rtEmitenteFormacao
+  +String rtUa
+  +String dataEmissao
+  +String dataVencimento
+  +String municipioEmissao
+  +bool apresentacaoNotaFiscal
+  +String numeroNotaFiscal
+  +bool rotaDefinida
+  +String tipoTransporte
+  +String identificacaoVeiculo
+  +int validadeDias
+  +List<dynamic> produtos
+  +List<dynamic> declaracoes
+}
+
+class "gedave::model::models_gedave.dart::ModelsGedave" {
+  -Map<dynamic, dynamic> _ptv
+  -Map<dynamic, dynamic> _cfo
+  -Map<dynamic, dynamic> _cfoc
+  -Map<dynamic, dynamic> _gta
+  -Map<dynamic, dynamic> _modelob
+  -Map<dynamic, dynamic> _vacCompulsoria
+  -Map<dynamic, dynamic> _laudoBrucTub
+  -Map<dynamic, dynamic> _atestadoBrucTub
+  -Map<dynamic, dynamic> _certSanitarioAnimal
+  -Map<dynamic, dynamic> _certAvesVivas
+  -Map<dynamic, dynamic> _certEventosAnimais
+  -Map<dynamic, dynamic> _certInsumosVet
+  +Map<dynamic, dynamic> ptv
+  +Map<dynamic, dynamic> cfo
+  +Map<dynamic, dynamic> cfoc
+  +Map<dynamic, dynamic> gta
+  +Map<dynamic, dynamic> modelob
+  +Map<dynamic, dynamic> vacCompulsoria
+  +Map<dynamic, dynamic> laudoBrucTub
+  +Map<dynamic, dynamic> atestadoBrucTub
+  +Map<dynamic, dynamic> certSanitarioAnimal
+  +Map<dynamic, dynamic> certAvesVivas
+  +Map<dynamic, dynamic> certEventosAnimais
+  +Map<dynamic, dynamic> certInsumosVet
+}
+
+class "gedave::model::consulta_certificado_comercio_aves_vivas_model.dart::ConsultaCertificadoComercioAvesVivasModel" {
+  +String nomeFantasia
+  +String codigoCnpj
+  +String endereco
+  +String nomeMunicipio
+  +String nomeUnidadeAdministrativa
+  +String dataEmissao
+  +String dataValidadeRegistroCda
+  +String statusPessoaJuridica
+}
+
+class "gedave::model::consulta_certificado_sanitario_animal_model.dart::ConsultaCertificadoSanitarioAnimalModel" {
+  +String numero
+  +String propriedade
+  +String proprietario
+  +String produtores
+  +String municipio
+  +String dataEmissao
+  +String cadastroServicoOficial
+  +String cpfCnpjProprietario
+  +String uf
+  +String dataValidade
+}
+
+class "gedave::model::consulta_certificado_promotor_eventos_concentracao_animal_model.dart::ConsultaCertificadoPromotorEventosConcentracaoAnimalModel" {
+  +String nomeFantasia
+  +String codigoCnpj
+  +String endereco
+  +String nomeMunicipio
+  +String nomeUnidadeAdministrativa
+  +String dataEmissao
+  +String dataValidadeRegistroCda
+  +String statusPessoaJuridica
+}
+
+class "gedave::model::cfo_model.dart::CfoModel" {
+  +int id
+  +int codigo
+  +String codigoBarras
+  +String produtorNome
+  +String produtorCpfCnpj
+  +String propriedadeNome
+  +String propriedadeCodigo
+  +String propriedadeEndereco
+  +String propriedadeMunicipio
+  +String propriedadeUf
+  +bool flagPragaQuarentenaria
+  +bool flagPragaNaoQuarentenaria
+  +bool flagPragaEspecifica
+  +bool flagPragaExportacao
+  +bool nspPartidaLacrada
+  +String rtEmitenteNome
+  +String rtEmitenteCrea
+  +String rtEmitenteHabilitacao
+  +String rtEmitenteFormacao
+  +String dataEmissao
+  +String dataVencimento
+  +int validadeDias
+  +String municipioEmissao
+  +List<dynamic> produtos
+  +List<dynamic> declaracoes
+}
+
+class "gedave::model::models.dart::ParametrosConsulta" {
+  +Map<dynamic, dynamic> model
+}
+
+class "gedave::model::models.dart::ParametrosRetorno" {
+  +String barCode
+  +String url
+}
+
+class "gedave::model::models.dart::ParametrosRetornoConsulta" {
+  +dynamic dados
+}
+
+class "gedave::view::home::home_view.dart::HomeView" {
+  +_HomeViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::home_view.dart::HomeView"
+
+class "gedave::view::home::home_view.dart::_HomeViewState" {
+  +int currentPos
+  +List<dynamic> imageList
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::home_view.dart::_HomeViewState"
+
+class "gedave::view::home::gedave::consultas::consultas_widget.dart::AnimacaoConsulta" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::gedave::consultas::consultas_widget.dart::AnimacaoConsulta"
+
+class "gedave::view::home::gedave::consultas::scanner_view.dart::ScannerView" {
+  +_ScannerViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::scanner_view.dart::ScannerView"
+
+class "gedave::view::home::gedave::consultas::scanner_view.dart::_ScannerViewState" {
+  +double espessuraLinha
+  +double espessuraContornos
+  +double proporcaoScaner
+  +bool flash
+  +GlobalKey<State<StatefulWidget>> qrKey
+  +QRViewController controller
+  +Animation<double> animation
+  +AnimationController animationController
+  +void initState()
+  +void didChangeDependencies()
+  +void dispose()
+  +Widget build()
+  -Widget _buildQrView()
+  -void _onQRViewCreated()
+}
+
+"gedave::view::home::gedave::consultas::scanner_view.dart::_ScannerViewState" o-- "flutter::src::widgets::framework.dart::GlobalKey<State<StatefulWidget>>"
+"gedave::view::home::gedave::consultas::scanner_view.dart::_ScannerViewState" o-- "qr_code_scanner::src::qr_code_scanner.dart::QRViewController"
+"gedave::view::home::gedave::consultas::scanner_view.dart::_ScannerViewState" o-- "flutter::src::animation::animation.dart::Animation<double>"
+"gedave::view::home::gedave::consultas::scanner_view.dart::_ScannerViewState" o-- "flutter::src::animation::animation_controller.dart::AnimationController"
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::scanner_view.dart::_ScannerViewState"
+"flutter::src::widgets::ticker_provider.dart::TickerProviderStateMixin" <|-- "gedave::view::home::gedave::consultas::scanner_view.dart::_ScannerViewState"
+
+class "gedave::view::home::gedave::consultas::scanner_view.dart::ParametrosScanner" {
+  +Map<dynamic, dynamic> model
+}
+
+class "gedave::view::home::gedave::consultas::consultas_view.dart::ConsultasView" {
+  +_ConsultasViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::consultas_view.dart::ConsultasView"
+
+class "gedave::view::home::gedave::consultas::consultas_view.dart::_ConsultasViewState" {
+  -GlobalKey<FormState> _formKey
+  +TextEditingController myController
+  +void dispose()
+  +Widget build()
+}
+
+"gedave::view::home::gedave::consultas::consultas_view.dart::_ConsultasViewState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"gedave::view::home::gedave::consultas::consultas_view.dart::_ConsultasViewState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::consultas_view.dart::_ConsultasViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_modelob_retorno_view.dart::ConsultaModelobRetornoView" {
+  +String barCode
+  +String url
+  +_ConsultaModelobRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_modelob_retorno_view.dart::ConsultaModelobRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_modelob_retorno_view.dart::_ConsultaModelobRetornoViewState" {
+  +Future<Data> futureData
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_modelob_retorno_view.dart::_ConsultaModelobRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_modelob_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_laudo_vistoria_local_realizacao_testes_brucelose_tuberculose_retorno_view.dart::ConsultaLaudoBrucTubRetornoView" {
+  +_ConsultaLaudoBrucTubRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_laudo_vistoria_local_realizacao_testes_brucelose_tuberculose_retorno_view.dart::ConsultaLaudoBrucTubRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_laudo_vistoria_local_realizacao_testes_brucelose_tuberculose_retorno_view.dart::_ConsultaLaudoBrucTubRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_laudo_vistoria_local_realizacao_testes_brucelose_tuberculose_retorno_view.dart::_ConsultaLaudoBrucTubRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_laudo_vistoria_local_realizacao_testes_brucelose_tuberculose_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_sanitario_animal_retorno_view.dart::ConsultaCertSanitarioRetornoView" {
+  +_ConsultaCertSanitarioRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_sanitario_animal_retorno_view.dart::ConsultaCertSanitarioRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_sanitario_animal_retorno_view.dart::_ConsultaCertSanitarioRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_sanitario_animal_retorno_view.dart::_ConsultaCertSanitarioRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_sanitario_animal_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::retorno_consultas_widget.dart::TabViewRetornoConsulta" {
+  +List<Widget> children
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::retorno_consultas_widget.dart::TabViewRetornoConsulta"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_promotor_de_eventos_concentracao_animal_retorno_view.dart::ConsultaCertPromotorEventosRetornoView" {
+  +_ConsultaCertPromotorEventosRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_promotor_de_eventos_concentracao_animal_retorno_view.dart::ConsultaCertPromotorEventosRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_promotor_de_eventos_concentracao_animal_retorno_view.dart::_ConsultaCertPromotorEventosRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_promotor_de_eventos_concentracao_animal_retorno_view.dart::_ConsultaCertPromotorEventosRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_promotor_de_eventos_concentracao_animal_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_gta_retorno_view.dart::ConsultaGtaRetornoView" {
+  +_ConsultaGtaRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_gta_retorno_view.dart::ConsultaGtaRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_gta_retorno_view.dart::_ConsultaGtaRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_gta_retorno_view.dart::_ConsultaGtaRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_gta_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_produtos_insumos_vet_retorno_view.dart::ConsultaCertProdutosVetRetornoView" {
+  +_ConsultaCertProdutosVetRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_produtos_insumos_vet_retorno_view.dart::ConsultaCertProdutosVetRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_produtos_insumos_vet_retorno_view.dart::_ConsultaCertProdutosVetRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_produtos_insumos_vet_retorno_view.dart::_ConsultaCertProdutosVetRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfoc_retorno_view.dart::ConsultaCfocRetornoView" {
+  +_ConsultaCfocRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfoc_retorno_view.dart::ConsultaCfocRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfoc_retorno_view.dart::_ConsultaCfocRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfoc_retorno_view.dart::_ConsultaCfocRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfoc_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfo_retorno_view.dart::ConsultaCfoRetornoView" {
+  +_ConsultaCfoRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfo_retorno_view.dart::ConsultaCfoRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfo_retorno_view.dart::_ConsultaCfoRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfo_retorno_view.dart::_ConsultaCfoRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_cfo_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_ptv_retorno_view.dart::ConsultaPtvRetornoView" {
+  +_ConsultaPtvRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_ptv_retorno_view.dart::ConsultaPtvRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_ptv_retorno_view.dart::_ConsultaPtvRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_ptv_retorno_view.dart::_ConsultaPtvRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_ptv_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_aves_vivas_retorno_view.dart::ConsultaCertificadoComercioAvesVivasView" {
+  +_ConsultaCertificadoComercioAvesVivasViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_aves_vivas_retorno_view.dart::ConsultaCertificadoComercioAvesVivasView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_aves_vivas_retorno_view.dart::_ConsultaCertificadoComercioAvesVivasViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_aves_vivas_retorno_view.dart::_ConsultaCertificadoComercioAvesVivasViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_comercio_aves_vivas_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_vacinacao_compulsorio_retorno_view.dart::ConsultaCertVacCompRetornoView" {
+  +_ConsultaCertVacCompRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_vacinacao_compulsorio_retorno_view.dart::ConsultaCertVacCompRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_vacinacao_compulsorio_retorno_view.dart::_ConsultaCertVacCompRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_certificado_vacinacao_compulsorio_retorno_view.dart::_ConsultaCertVacCompRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_atestado_vacinacao_brucelose_tuberculose_retorno_view.dart::ConsultaVacBrucTubRetornoView" {
+  +_ConsultaVacBrucTubRetornoViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_atestado_vacinacao_brucelose_tuberculose_retorno_view.dart::ConsultaVacBrucTubRetornoView"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_atestado_vacinacao_brucelose_tuberculose_retorno_view.dart::_ConsultaVacBrucTubRetornoViewState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::consultas::retorno_consultas::consulta_atestado_vacinacao_brucelose_tuberculose_retorno_view.dart::_ConsultaVacBrucTubRetornoViewState"
+
+class "gedave::view::home::gedave::consultas::retorno_consultas::consulta_atestado_vacinacao_brucelose_tuberculose_retorno_view.dart::Item" {
+  +String expandedValue
+  +bool isExpanded
+}
+
+class "gedave::view::home::gedave::gedave_widget.dart::BotaoGedave" {
+  +Map<dynamic, dynamic> model
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::gedave::gedave_widget.dart::BotaoGedave"
+
+class "gedave::view::home::gedave::gedave_widget.dart::TabViewGedave" {
+  +List<Widget> children
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::gedave::gedave_widget.dart::TabViewGedave"
+
+class "gedave::view::home::gedave::gedave_view.dart::GedaveView" {
+  +_GedaveViewState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "gedave::view::home::gedave::gedave_view.dart::GedaveView"
+
+class "gedave::view::home::gedave::gedave_view.dart::_GedaveViewState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "gedave::view::home::gedave::gedave_view.dart::_GedaveViewState"
+
+class "gedave::view::home::home_widget.dart::HomeDrawer" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::home_widget.dart::HomeDrawer"
+
+class "gedave::view::home::home_widget.dart::BotaoRedirecionamentoInterno" {
+  +String rota
+  +String texto
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::home_widget.dart::BotaoRedirecionamentoInterno"
+
+class "gedave::view::home::home_widget.dart::BotaoRedirecionamentoExterno" {
+  +String url
+  +String texto
+  +void snackBarHome()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::home_widget.dart::BotaoRedirecionamentoExterno"
+
+class "gedave::view::home::home_widget.dart::ImagensCarrosel" {
+  +String imgPath
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "gedave::view::home::home_widget.dart::ImagensCarrosel"
+
+class "gedave::view::cores.dart::Cores" {
+  {static} +Color azul
+  {static} +Color verde
+  {static} +Color azulEscuro
+  {static} +Color corPrincipal
+  {static} +Color corDetalhes
+  {static} +Color corBloco
+}
+
+"gedave::view::cores.dart::Cores" o-- "dart::ui::Color"
+
+
+@enduml
